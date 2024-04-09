@@ -15,7 +15,7 @@ class IoCContainer {
     register(name, type) {
         this.registrations.set(name, type);
     }
-    resolve(name, ...args) {
+    getBlockchain(name, args) {
         const Type = this.registrations.get(name);
         if (!Type) {
             throw new Error(`No registration for ${name}`);

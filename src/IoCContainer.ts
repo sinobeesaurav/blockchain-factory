@@ -17,7 +17,7 @@ export class IoCContainer {
     this.registrations.set(name, type);
   }
 
-  public getBlockchain<T>(name: string, ...args: any[]): T {
+  public getBlockchain<T>(name: string, args: any): T {
     const Type = this.registrations.get(name);
     if (!Type) {
       throw new Error(`No registration for ${name}`);

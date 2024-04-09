@@ -6,5 +6,5 @@ export declare class IoCContainer {
     register<T>(name: string, type: {
         new (...args: any[]): T;
     }): void;
-    resolve<T>(name: string, ...args: any[]): T;
+    getBlockchain<T>(name: string, args: any): T;
 }
