@@ -1,3 +1,4 @@
+import { Blockchains } from "./Blockchains";
 import { ConfigurationManager } from "./ConfigurationManager";
 
 export class IoCContainer {
@@ -14,6 +15,9 @@ export class IoCContainer {
   }
 
   public register<T>(name: string, type: { new (...args: any[]): T }): void {
+    if (!Blockchains.hasOwnProperty(name)) {
+      throw new Error(`Blockchain name not parent in Blochains enum...`);
+    }
     this.registrations.set(name, type);
   }
 
