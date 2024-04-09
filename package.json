@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "rgb-package": "github:sinobeesaurav/rgb-package#beta"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.6"
   }
 }

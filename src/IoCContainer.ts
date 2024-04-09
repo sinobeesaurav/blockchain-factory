@@ -1,3 +1,5 @@
+import { ConfigurationManager } from "./ConfigurationManager";
+
 export class IoCContainer {
   private static instance: IoCContainer;
   private registrations = new Map<string, { new (...args: any[]): any }>();
@@ -20,6 +22,7 @@ export class IoCContainer {
     if (!Type) {
       throw new Error(`No registration for ${name}`);
     }
-    return new Type(...args);
+    const config = args || ConfigurationManager.getConfig(name) || {};
+    return new Type(config);
   }
 }
