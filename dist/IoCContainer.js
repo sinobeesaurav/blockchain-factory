@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IoCContainer = void 0;
+const ConfigurationManager_1 = require("./ConfigurationManager");
 class IoCContainer {
     constructor() {
         this.registrations = new Map();
@@ -19,7 +20,8 @@ class IoCContainer {
         if (!Type) {
             throw new Error(`No registration for ${name}`);
         }
-        return new Type(...args);
+        const config = args || ConfigurationManager_1.ConfigurationManager.getConfig(name) || {};
+        return new Type(config);
     }
 }
 exports.IoCContainer = IoCContainer;
